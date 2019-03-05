@@ -7,7 +7,7 @@ import groovy.transform.ToString
 @GrailsCompileStatic
 @EqualsAndHashCode(includes='username')
 @ToString(includes='username', includeNames=true, includePackage=false)
-class User implements Serializable {
+class MontagueUser implements Serializable {
 
     private static final long serialVersionUID = 1
 
