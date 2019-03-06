@@ -22,6 +22,8 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/**/css/**',      filters: 'none'],
 	[pattern: '/**/images/**',   filters: 'none'],
 	[pattern: '/**/favicon.ico', filters: 'none'],
+	[pattern: '/capulets/**',    filters: 'capuletsAuthenticationFilter'],
+	[pattern: '/montagues/**',   filters: 'montaguesAuthenticationFilter'],
 	[pattern: '/**',             filters: 'JOINED_FILTERS']
 ]
 
