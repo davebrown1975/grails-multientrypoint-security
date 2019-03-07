@@ -9,7 +9,7 @@ class BootStrap {
     def init = { servletContext ->
 
       // Establish single role
-      if (! Role.count() )
+      if (! Role.count())
         new Role(authority: 'ROLE_USER').save()
 
       // create a capulet user
