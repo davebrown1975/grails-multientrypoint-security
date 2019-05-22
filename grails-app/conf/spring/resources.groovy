@@ -4,29 +4,41 @@ import com.tucanoo.mep.*
 beans = {
     userPasswordEncoderListener(UserPasswordEncoderListener)
 
+    montaguesUserDetailsService(MontaguesUserDetailsService)
+    capuletsUserDetailsService(CapuletsUserDetailsService)
 
     capuletsAuthenticationProvider(CapuletsAuthenticationProvider) {
-      userDetailsService = ref('userDetailsService')
+      userDetailsService = ref('capuletsUserDetailsService')
     }
 
     montaguesAuthenticationProvider(MontaguesAuthenticationProvider) {
-      userDetailsService = ref('userDetailsService')
+      userDetailsService = ref('montaguesUserDetailsService')
     }
 
     capuletsAuthenticationManager(CapuletsAuthenticationManager) { bean ->
       bean.constructorArgs = [ref('capuletsAuthenticationProvider')]
     }
+
+    montaguesAuthenticationManager(MontaguesAuthenticationManager) { bean ->
+      bean.constructorArgs = [ref('montaguesAuthenticationProvider')]
+    }
+
   
+    capuletsAuthenticationEntryPoint(CapuletsAuthenticationEntryPoint, "/capulets/auth")
+
+    montaguesAuthenticationEntryPoint(CapuletsAuthenticationEntryPoint, "/montagues/auth")
+    
     // establish authentication filter for capulets
     capuletsAuthenticationFilter(CapuletsAuthenticationFilter) {
       authenticationManager = ref('capuletsAuthenticationManager')
+      //authenticationEntryPoint = ref('capuletsAuthenticationEntryPoint')
 //      filterProcessesUrl = '/capulets/index'
     }
 
     // establish authentication filter for montagues
     montaguesAuthenticationFilter(MontaguesAuthenticationFilter) {
-      authenticationManager = ref('authenticationManager')
-//      filterProcessesUrl = '/montagues/index'
+      authenticationManager = ref('montaguesAuthenticationManager')
+      //authenticationEntryPoint = ref('montaguesAuthenticationEntryPoint')
     }
 }
 

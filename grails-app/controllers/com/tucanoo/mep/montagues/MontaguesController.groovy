@@ -4,8 +4,13 @@ import grails.plugin.springsecurity.annotation.Secured
 
 class MontaguesController {
 
-    def index() { }
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def index() {
+      println "montagues index"
+    }
 
     @Secured(['permitAll'])
-    def auth() {}
+    def auth() {
+      println "montagues auth"
+    }
 }

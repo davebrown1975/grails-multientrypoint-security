@@ -9,13 +9,14 @@ class SecuritySpec extends GebSpec {
 
     def "test access to montagues home page is secured and shows login page for montagues"() {
       when:
-        baseUrl = "http://localhost:${serverPort}/"
-        go 'montagues'
-      then:
+        println "Starting test"
+//        baseUrl = "http://localhost:${serverPort}/"
+        go '/montagues/index'
+      then:       
         at(MontagueLoginPage)
     }
 
-    def "test access to capulets home page is secured  and shows login page for montagues"() {
+    def "test access to capulets home page is secured  and shows login page for capulets"() {
 
     }
 

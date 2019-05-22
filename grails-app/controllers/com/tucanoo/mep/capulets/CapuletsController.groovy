@@ -2,11 +2,15 @@ package com.tucanoo.mep.capulets
 
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_FULLY'])
 class CapuletsController {
 
-    def index() { }
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def index() {
+      println "capulets index"
+    }
 
     @Secured(['permitAll'])
-    def auth() {}
+    def auth() {
+      println "capulets auth"
+    }
 }

@@ -19,9 +19,8 @@ class CapuletsAuthenticationFilter extends UsernamePasswordAuthenticationFilter 
   @Override
   void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
     super.doFilter(req, res, chain)
-    println "IN DO FILTER"
-    println requiresAuthentication(req, res)
-    // prints false... why when the controller is marked as Secured...?
+    println "IN CAPULET FILTER"
+    println requiresAuthentication(req, res)   // prints false... why when the controller is marked as Secured...?
   }
 
   @Override
